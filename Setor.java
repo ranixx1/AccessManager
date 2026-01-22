@@ -6,3 +6,5 @@ public record Setor(Long id, String nome) {
         }
     }
 }
+
+// get = id() e nome()
