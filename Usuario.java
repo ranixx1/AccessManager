@@ -49,6 +49,12 @@ public class Usuario {
         this.role = novoRole;
     }
 
+    public boolean podeAcessarSistema() {
+        return ativo;
+    }
+    public boolean isAdmin(){
+        return role == Role.ADMIN;
+    }
     public boolean isAtivo() {
         return ativo;
     }
