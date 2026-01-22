@@ -1,16 +1,8 @@
-public class Setor {
-    private final Long id;
-    private String nome;
+public record Setor(Long id, String nome) {
 
-    public Setor(Long id, String nome){
-        this.id = id;
-        this.nome = nome;
-    }
-
-    public Long getId(){
-        return id;
-    }
-    public String Getnome(){
-        return nome;   
+    public Setor{
+        if (id == null || nome == null) {
+            throw new IllegalArgumentException("Dados do setor inválidos");
+        }
     }
 }
