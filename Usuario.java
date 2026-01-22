@@ -48,4 +48,32 @@ public class Usuario {
         }
         this.role = novoRole;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void desativar() {
+        this.ativo = false;
+    }
+
+    public void ativar() {
+        this.ativo = true;
+    }
+
+    public void bloquear() {
+        desativar();
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", matricula='" + matricula + '\'' +
+                ", nome='" + nome + '\'' +
+                ", role=" + role +
+                ", ativo=" + ativo +
+                '}';
+    }
+
 }
