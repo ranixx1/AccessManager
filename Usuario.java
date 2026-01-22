@@ -44,7 +44,7 @@ public class Usuario {
 
     public void promover(Role novoRole) {
         if (novoRole == null) {
-            throw new IllegalArgumentException("Nome inválido");
+            throw new IllegalArgumentException("Role inválido");
         }
         this.role = novoRole;
     }
