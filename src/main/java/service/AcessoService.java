@@ -12,7 +12,7 @@ public class AcessoService {
     private final List<Usuario> usuarios;
     private final List<Permissao> permissoes;
 
-    // 👇 histórico vive aqui
+    // histórico vive aqui
     private final List<Acesso> historico = new ArrayList<>();
 
     public AcessoService(List<Usuario> usuarios, List<Permissao> permissoes) {
@@ -40,7 +40,7 @@ public class AcessoService {
                             !hora.isAfter(p.getHorarioFim()));
         }
 
-        // 👇 REGISTRA A TENTATIVA
+        // REGISTRA A TENTATIVA
         historico.add(new Acesso(
                 usuarioId,
                 setorId,
@@ -51,7 +51,7 @@ public class AcessoService {
         return permitido;
     }
 
-    // 👇 acesso controlado ao histórico
+    // acesso controlado ao histórico
     public List<Acesso> getHistorico() {
         return Collections.unmodifiableList(historico);
     }
