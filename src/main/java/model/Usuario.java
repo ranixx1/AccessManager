@@ -36,7 +36,7 @@ public class Usuario {
         return role;
     }
 
-    public void setNome(String nome) {
+    public void renomear(String nome) {
         if (nome == null) {
             throw new IllegalArgumentException("Nome inválido");
         }
@@ -50,9 +50,6 @@ public class Usuario {
         this.role = novoRole;
     }
 
-    public boolean podeAcessarSistema() {
-        return ativo;
-    }
     public boolean isAdmin(){
         return role == Role.ADMIN;
     }
