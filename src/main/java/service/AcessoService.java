@@ -1,6 +1,8 @@
 package service;
 
 import java.time.LocalTime;
+import java.time.LocalDateTime;
+
 import java.util.*;
 
 import model.*;
@@ -18,34 +20,33 @@ public class AcessoService {
         this.permissoes = permissoes;
     }
 
-    public boolean validar(Long usuarioId, Long setorId, LocalTime hora) {
+    public boolean validar(Long usuarioId, Long setorId) {
+        LocalDateTime agora = LocalDateTime.now();
+        LocalTime hora = agora.toLocalTime();
 
         boolean permitido = false;
 
         Usuario usuario = usuarios.stream()
-            .filter(u -> u.getId().equals(usuarioId))
-            .findFirst()
-            .orElse(null);
+                .filter(u -> u.getId().equals(usuarioId))
+                .findFirst()
+                .orElse(null);
 
         if (usuario != null && usuario.isAtivo()) {
             permitido = permissoes.stream()
-                .anyMatch(p ->
-                    p.getUsuarioId().equals(usuarioId) &&
-                    p.getSetorId().equals(setorId) &&
-                    p.podeEntrar() &&
-                    !hora.isBefore(p.getHorarioInicio()) &&
-                    !hora.isAfter(p.getHorarioFim())
-                );
+                    .anyMatch(p -> p.getUsuarioId().equals(usuarioId) &&
+                            p.getSetorId().equals(setorId) &&
+                            p.podeEntrar() &&
+                            !hora.isBefore(p.getHorarioInicio()) &&
+                            !hora.isAfter(p.getHorarioFim()));
         }
 
         // 👇 REGISTRA A TENTATIVA
         historico.add(new Acesso(
-            usuarioId,
-            setorId,
-            hora,
-            null,
-            permitido
-        ));
+                usuarioId,
+                setorId,
+                agora,
+                null,
+                permitido));
 
         return permitido;
     }
