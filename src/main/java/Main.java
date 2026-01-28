@@ -12,13 +12,13 @@ public class Main {
     public static void main(String[] args) {
 
         List<Usuario> usuarios = UsuarioCSVMapper.load("csv/usuarios.csv");
+
         // ===== SERVICE =====
         UsuarioService usuarioService = new UsuarioService(usuarios);
         Long id;
         System.out.println("1 - CRIAR USUARIO");
         System.out.println("2 - DESATIVAR USUARIO");
         System.out.println("3 - REATIVAR USUARIO");
-
         int opcoes = sc.nextInt();
         sc.nextLine();
         switch (opcoes) {
@@ -42,7 +42,6 @@ public class Main {
 
                 usuarioService.reativarUsuario(id);
                 break;
-
             default:
                 break;
         }
