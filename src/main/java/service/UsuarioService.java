@@ -68,6 +68,17 @@ public class UsuarioService {
                 .orElse(null);
     }
 
+    public void imprimirAll() {
+        if (usuarios.isEmpty()) {
+            System.out.println("Lista de usuários está vazia");
+            return;
+        }
+        for (Usuario u : usuarios) {
+            System.out.println(u);
+        }
+
+    }
+
     public void desativarUsuario(Long id) {
 
         for (Usuario u : usuarios) {
@@ -84,6 +95,23 @@ public class UsuarioService {
         }
 
         throw new NoSuchElementException("Usuário não encontrado");
+    }
+
+    public void promover(Long id, Role novoRole) {
+        if (novoRole == null) {
+            throw new IllegalArgumentException("Role inválido");
+        }
+        if (id == null) {
+            throw new IllegalArgumentException("id inválido");
+        }
+        for (Usuario u : usuarios) {
+            if (u.getId().equals(id)) {
+                u.promover(novoRole);
+            }
+        }
+        UsuarioRepository.save(usuarios);
+        return;
+
     }
 
     public void reativarUsuario(Long id) {
