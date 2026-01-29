@@ -1,4 +1,5 @@
 package model;
+
 import enums.Role;
 
 public class Usuario {
@@ -50,9 +51,10 @@ public class Usuario {
         this.role = novoRole;
     }
 
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return role == Role.ADMIN;
     }
+
     public boolean isAtivo() {
         return ativo;
     }
@@ -71,13 +73,14 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", matricula='" + matricula + '\'' +
-                ", nome='" + nome + '\'' +
-                ", role=" + role +
-                ", ativo=" + ativo +
-                '}';
+        return """
+                Usuario
+                ├─ Id        : %d
+                ├─ Matricula : %s
+                ├─ Nome      : %s
+                ├─ Role      : %s
+                └─ Ativo     : %s
+                """.formatted(id, matricula, nome, role, ativo);
     }
 
 }
