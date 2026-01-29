@@ -32,12 +32,18 @@ public class AcessoService {
                 .orElse(null);
 
         if (usuario != null && usuario.isAtivo()) {
-            permitido = permissoes.stream()
-                    .anyMatch(p -> p.getUsuarioId().equals(usuarioId) &&
-                            p.getSetorId().equals(setorId) &&
-                            p.podeEntrar() &&
-                            !hora.isBefore(p.getHorarioInicio()) &&
-                            !hora.isAfter(p.getHorarioFim()));
+
+            // ADMIN tem acesso total 24h
+            if (usuario.isAdmin()) {
+                permitido = true;
+            } else {
+                permitido = permissoes.stream()
+                        .anyMatch(p -> p.getUsuarioId().equals(usuarioId) &&
+                                p.getSetorId().equals(setorId) &&
+                                p.podeEntrar() &&
+                                !hora.isBefore(p.getHorarioInicio()) &&
+                                !hora.isAfter(p.getHorarioFim()));
+            }
         }
 
         // REGISTRA A TENTATIVA
@@ -49,6 +55,10 @@ public class AcessoService {
                 permitido));
 
         return permitido;
+    }
+
+    public void carregarHistorico(List<Acesso> acessos) {
+        historico.addAll(acessos);
     }
 
     // acesso controlado ao histórico
