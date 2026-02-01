@@ -30,6 +30,7 @@ public class Main {
             System.out.println("5 - Validar acesso");
             System.out.println("6 - Mostrar histórico de acessos");
             System.out.println("7 - Promover usuário");
+            System.out.println("8 - Registrar saída");
             System.out.println("0 - Sair");
 
             int op = sc.nextInt();
@@ -63,12 +64,16 @@ public class Main {
 
                     case 5 -> {
                         System.out.print("ID do usuário: ");
-                        Long u = sc.nextLong();
-                        System.out.print("ID do setor: ");
-                        Long s = sc.nextLong();
+                        Long usuarioId = sc.nextLong();
 
-                        boolean ok = acessoService.validar(u, s);
-                        System.out.println(ok ? "✅ Acesso permitido" : "❌ Acesso negado");
+                        System.out.print("ID do setor: ");
+                        Long setorId = sc.nextLong();
+
+                        boolean permitido = acessoService.validar(usuarioId, setorId);
+
+                        System.out.println(
+                                permitido ? "Acesso permitido" : "Acesso negado");
+
                     }
 
                     case 6 -> {
@@ -85,6 +90,16 @@ public class Main {
                         System.out.print("novaRole (ADMIN, MANAGER, EMPLOYEE, VISITOR): ");
                         Role novaRole = Role.valueOf(sc.next().toUpperCase());
                         usuarioService.promover(usu, novaRole);
+                    }
+                    case 8 -> {
+                        System.out.print("ID do usuário: ");
+                        Long usuarioId = sc.nextLong();
+
+                        System.out.print("ID do setor: ");
+                        Long setorId = sc.nextLong();
+
+                        acessoService.registrarSaida(usuarioId, setorId);
+                        System.out.println("Saída registrada com sucesso.");
                     }
 
                     case 0 -> {
