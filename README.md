@@ -142,3 +142,7 @@ List<Acesso> getHistoricoPorSetor(Long setorId)
 2. Sistema valida usuário, setor, permissão e horário  
 3. Entrada registrada ou negada  
 4. Saída atualiza o registro correto
+
+## DASH
+sheets: https://docs.google.com/spreadsheets/d/1K5j0i66TbxiGYiCECk8wVdYhZVLkabLMQc23aqTT4Dc/edit?usp=sharing
+looker: https://lookerstudio.google.com/reporting/cb836dae-56d2-4422-b24c-413ba97ef46c/page/sfSmF
