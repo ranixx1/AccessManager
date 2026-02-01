@@ -1,13 +1,19 @@
 package mapper;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Acesso;
 
 public class AcessoCSVMapper {
+
+    private static final DateTimeFormatter FORMATTER =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public static List<Acesso> load(String path) {
 
@@ -24,18 +30,19 @@ public class AcessoCSVMapper {
 
                 String[] c = linha.split(",");
 
-                Long usuarioId = Long.valueOf(c[1]);
-                Long setorId = Long.valueOf(c[2]);
+                Long usuarioId = Long.parseLong(c[0]);
+                Long setorId = Long.parseLong(c[1]);
 
                 LocalDateTime entrada =
-                        LocalDateTime.parse(c[3]);
+                        LocalDateTime.parse(c[2], FORMATTER);
 
                 LocalDateTime saida = null;
-                if (c.length > 4 && !c[4].isBlank()) {
-                    saida = LocalDateTime.parse(c[4]);
+                if (!c[3].isBlank()) {
+                    saida = LocalDateTime.parse(c[3], FORMATTER);
                 }
 
-                boolean permitido = Boolean.parseBoolean(c[5]);
+                boolean permitido =
+                        Boolean.parseBoolean(c[4]);
 
                 acessos.add(new Acesso(
                         usuarioId,
