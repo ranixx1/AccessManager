@@ -9,7 +9,7 @@ if (!fs.existsSync(CSV_DIR)) {
 }
 
 // CONFIG
-const QTD_USUARIOS = 30
+const QTD_USUARIOS = 1000
 const QTD_SETORES = 5
 const QTD_ACESSOS = 10000
 
