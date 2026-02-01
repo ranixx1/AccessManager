@@ -9,7 +9,7 @@ O sistema simula um controle de **entrada e saída de usuários** em setores, re
 ## 📂 Estrutura do Projeto
 
 ```
-project/
+AcessManager/
 │
 ├── csv/                    # Dados persistidos (gerados pelo script JS)
 │   ├── usuarios.csv
@@ -26,7 +26,6 @@ project/
 ├── service/                # Regras de negócio
 │   ├── UsuarioService.java
 │   ├── SetorService.java
-│   ├── PermissaoService.java
 │   └── AcessoService.java
 │
 ├── mapper/                 # Leitura de CSV → Objetos
@@ -38,7 +37,6 @@ project/
 ├── repository/             # Escrita em CSV
 │   ├── UsuarioRepository.java
 │   ├── SetorRepository.java
-│   ├── PermissaoRepository.java
 │   └── AcessoRepository.java
 │
 ├── enums/
