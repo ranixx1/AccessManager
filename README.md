@@ -25,7 +25,6 @@ AcessManager/
 │
 ├── service/                # Regras de negócio
 │   ├── UsuarioService.java
-│   ├── SetorService.java
 │   └── AcessoService.java
 │
 ├── mapper/                 # Leitura de CSV → Objetos
@@ -36,7 +35,6 @@ AcessManager/
 │
 ├── repository/             # Escrita em CSV
 │   ├── UsuarioRepository.java
-│   ├── SetorRepository.java
 │   └── AcessoRepository.java
 │
 ├── enums/
