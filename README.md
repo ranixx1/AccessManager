@@ -109,18 +109,6 @@ desativarUsuario(Long id)
 reativarUsuario(Long id)
 ```
 
-### 📌 SetorService
-```java
-criarSetor(String nome)
-buscarPorId(Long id)
-listarSetores()
-```
-
-### 📌 PermissaoService
-```java
-criarPermissao(Long usuarioId, Long setorId, LocalTime inicio, LocalTime fim)
-listarPermissoes()
-buscarPermissao(Long usuarioId, Long setorId)
 ```
 
 ### 📌 AcessoService
